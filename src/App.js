@@ -57,29 +57,19 @@ class App extends Component {
           },
           "columnOrder" : ["column-1", "column-2", "column-3", "column-4"],
           "correctAnswer" : {
-            "column-1" : {
-              "id" : "column-1",
-              "itemIds" : []
-            },
-            "column-2" : {
-              "id" : "column-2",
-              "itemIds" : ["item-1"]
-            },
-            "column-3" : {
-              "id" : "column-3",
-              "itemIds" : ["item-3", "item-4", "item-5", "item-6"]
-            },
-            "column-4" : {
-              "id" : "column-4",
-              "itemIds" : ["item-2"]
-            }
+            "item-1" : "column-2",
+            "item-2" : "column-4",
+            "item-3" : "column-3",
+            "item-4" : "column-3",
+            "item-5" : "column-3",
+            "item-6" : "column-2"
           },
           "correctResponse" : "You're brilliant!",
           "incorrectResponse" : "It's a good thing you're pretty."
         };
 
-  recordAnswer = (answerString, isCorrect) => {
-    console.log(answerString, isCorrect);
+  recordAnswer = (isCorrect) => {
+    console.log(isCorrect);
   }
 
   render() {

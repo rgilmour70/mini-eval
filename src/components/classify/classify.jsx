@@ -93,24 +93,33 @@ class Classify extends Component {
 
 		this.setState({ tried: true });
 
-		const correctnessObj = {};
 		const correctResponse = this.state.correctResponse;
 		const incorrectResponse = this.state.incorrectResponse;
 
-		for (let i=1; i<=this.state.columnOrder.length; i++) {
+		const answerKey = JSON.stringify(this.state.correctAnswer);
+		console.log(answerKey);
 
-			let k = 'column-' + i;
+		let userInput = {};
 
-			let answerKey = JSON.stringify(this.state.correctAnswer[k].itemIds.sort());
-			let userInput = JSON.stringify(this.state.columns[k].itemIds.sort());
+		for (let j=1; j<=Object.keys(this.state.correctAnswer).length; j++) {
+			let label = 'item-' + j;
+			userInput[label] = '';
 
-			correctnessObj[k] = answerKey === userInput;
-
+			for (let i=1; i<=Object.keys(this.state.columns).length; i++) {
+				let col = 'column-' + i;
+				let colContents = this.state.columns[col].itemIds;
+				if (colContents.includes(label)) { 
+					// this col contains the current item
+					userInput[label] = col;
+				}
+			}
 		}
+		userInput = JSON.stringify(userInput);
+		console.log(userInput);
 
-		const isCorrect = Object.values(correctnessObj).every(Boolean);
+		// const isCorrect = Object.values(correctnessObj).every(Boolean);
 
-		const answerString = JSON.stringify(correctnessObj);
+		const isCorrect = answerKey === userInput;
 
 		if (isCorrect) {
 			this.setState({ correct: isCorrect, response: correctResponse });
@@ -120,7 +129,7 @@ class Classify extends Component {
 
 		if (!this.state.tried) {
 			// this.recordAnswer(this.state.currentSlide, this.state.contentId, answerString, isCorrect);
-			this.state.recordAnswer(answerString, isCorrect);
+			this.state.recordAnswer(isCorrect);
 		}
 
 	};
