@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+// import axios from 'axios';
 import './App.css';
 import Classify from './components/classify/classify';
+
+// const API_PATH = './process.php';
 
 class App extends Component {
 
@@ -10,27 +13,27 @@ class App extends Component {
           "items" : {
             "item-1" : {
               "id" : "item-1",
-              "content" : "Tweet"
+              "content" : "Empirical Research Study"
             },
             "item-2" : {
               "id" : "item-2",
-              "content" : "Article"
+              "content" : "Book"
             },
             "item-3" : {
               "id" : "item-3",
-              "content" : "Book"
+              "content" : "Tweet"
             },
             "item-4" : {
               "id" : "item-4",
-              "content" : "Wikipedia Entry"
+              "content" : "Newspaper Article"
             },
             "item-5" : {
               "id" : "item-5",
-              "content" : "Newspaper"
+              "content" : "Scholarly Article"
             },
             "item-6" : {
               "id" : "item-6",
-              "content" : "Soup Can"
+              "content" : "Website"
             }
           },
           "columns" : {
@@ -57,25 +60,36 @@ class App extends Component {
           },
           "columnOrder" : ["column-1", "column-2", "column-3", "column-4"],
           "correctAnswer" : {
-            "item-1" : "column-2",
-            "item-2" : "column-4",
-            "item-3" : "column-3",
+            "item-1" : "column-4",
+            "item-2" : "column-3",
+            "item-3" : "column-2",
             "item-4" : "column-3",
-            "item-5" : "column-3",
+            "item-5" : "column-4",
             "item-6" : "column-2"
           },
-          "correctResponse" : "You're brilliant!",
-          "incorrectResponse" : "It's a good thing you're pretty."
+          "correctResponse" : "You're brilliant! You got it exactly right!",
+          "incorrectResponse" : "Empirical Research Study: Peer Review<br>Book: Editorial Review<br>Tweet: No Review<br>Newspaper Article: Editorial Review<br>Scholarly Article: Peer Review<br>Website: No Review",
+          "error" : ""
         };
 
-  recordAnswer = (isCorrect) => {
-    console.log(isCorrect);
-  }
+  // writeToDatabase = (userInput) => {
+  //   console.log(userInput);
+  //   axios({
+  //     method: 'post',
+  //     url: `${API_PATH}`,
+  //     headers: { 'content-type': 'application/json' },
+  //     data: userInput
+  //   })
+  //   .then(response => {
+  //     console.log(response);
+  //   })
+  //   .catch(error => this.setState({ error: error.message }));
+  // };
 
   render() {
     return (
       <div className="App">
-        <Classify {...this.state} recordAnswer={this.recordAnswer} />
+        <Classify {...this.state} writeToDatabase={this.writeToDatabase} />
       </div>
     );
   }

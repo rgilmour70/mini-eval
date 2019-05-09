@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
+import renderHTML from 'react-render-html';
 import Column from './column';
 import Feedback from '../feedback';
 
@@ -97,7 +98,7 @@ class Classify extends Component {
 		const incorrectResponse = this.state.incorrectResponse;
 
 		const answerKey = JSON.stringify(this.state.correctAnswer);
-		console.log(answerKey);
+		// console.log(answerKey);
 
 		let userInput = {};
 
@@ -114,12 +115,12 @@ class Classify extends Component {
 				}
 			}
 		}
-		userInput = JSON.stringify(userInput);
-		console.log(userInput);
+		const userInputString = JSON.stringify(userInput);
+		// console.log(userInputString);
 
 		// const isCorrect = Object.values(correctnessObj).every(Boolean);
 
-		const isCorrect = answerKey === userInput;
+		const isCorrect = answerKey === userInputString;
 
 		if (isCorrect) {
 			this.setState({ correct: isCorrect, response: correctResponse });
@@ -127,12 +128,14 @@ class Classify extends Component {
 			this.setState({ correct: isCorrect, response: incorrectResponse });
 		}
 
-		if (!this.state.tried) {
-			// this.recordAnswer(this.state.currentSlide, this.state.contentId, answerString, isCorrect);
-			this.state.recordAnswer(isCorrect);
-		}
+		// if (!this.state.tried) {
+		// 	// this.recordAnswer(this.state.currentSlide, this.state.contentId, answerString, isCorrect);
+		// 	this.state.writeToDatabase(userInput);
+		// }
 
 	};
+
+
 
 
 	render() {
@@ -157,7 +160,7 @@ class Classify extends Component {
 					</Container>
 				</DragDropContext>
 				<button onClick={this.onFinish} className="btn btn-light check-answer">Check Answer</button>
-				<Feedback response={this.state.response} />
+				<Feedback response={this.state.response ? renderHTML(this.state.response) : ''} />
 			</React.Fragment>
 		)
 	}
