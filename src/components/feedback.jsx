@@ -5,7 +5,9 @@ import React, { Component } from 'react';
 const Feedback = (props) => {
 	if (props.response !== '') {
 		return (
-			<div className="feedback">{props.response}</div>
+			<div className="feedback">
+				<div>{props.response}</div>
+			</div>
 		);
 	} else {
 		return null;

@@ -9,6 +9,7 @@ const ItemsContainer = styled.div`
 
 const ItemSet = styled.div`
 	background-color: #e2f8eb;
+	margin-bottom: 1em;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;

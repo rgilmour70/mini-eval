@@ -68,7 +68,7 @@ class App extends Component {
             "item-6" : "column-2"
           },
           "correctResponse" : "You're brilliant! You got it exactly right!",
-          "incorrectResponse" : "Empirical Research Study: Peer Review<br>Book: Editorial Review<br>Tweet: No Review<br>Newspaper Article: Editorial Review<br>Scholarly Article: Peer Review<br>Website: No Review",
+          "incorrectResponse" : "<p>Not quite. Here are the correct answers:</p><table><tr><td>Empirical Research Study</td><td>Peer Review</td></tr><tr><td>Book</td><td>Editorial Review</td></tr><tr><td>Tweet</td><td>No Review</td></tr><tr><td>Newspaper Article</td><td>Editorial Review</td></tr><tr><td>Scholarly Article</td><td>Peer Review</td></tr><tr><td>Website</td><td>No Review</table>",
           "error" : ""
         };
 
@@ -89,6 +89,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1>Levels of Review</h1>
+        <p>Drag the resource types (green) into the appropriate column based on their level of review.</p>
         <Classify {...this.state} writeToDatabase={this.writeToDatabase} />
       </div>
     );
