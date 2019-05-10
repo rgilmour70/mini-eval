@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import './App.css';
 import Classify from './components/classify/classify';
 
-// const API_PATH = './process.php';
+const API_PATH = './api/write.php';
 
 class App extends Component {
 
@@ -72,19 +72,19 @@ class App extends Component {
           "error" : ""
         };
 
-  // writeToDatabase = (userInput) => {
-  //   console.log(userInput);
-  //   axios({
-  //     method: 'post',
-  //     url: `${API_PATH}`,
-  //     headers: { 'content-type': 'application/json' },
-  //     data: userInput
-  //   })
-  //   .then(response => {
-  //     console.log(response);
-  //   })
-  //   .catch(error => this.setState({ error: error.message }));
-  // };
+  writeToDatabase = (userInput) => {
+    console.log(userInput);
+    axios({
+      method: 'post',
+      url: `${API_PATH}`,
+      headers: { 'content-type': 'application/json' },
+      data: userInput
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => this.setState({ error: error.message }));
+  };
 
   render() {
     return (
