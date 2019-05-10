@@ -136,8 +136,6 @@ class Classify extends Component {
 	};
 
 
-
-
 	render() {
 		return (
 			<React.Fragment>
