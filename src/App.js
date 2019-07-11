@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './App.css';
 import Classify from './components/classify/classify';
-
-const WRITE_API = './api/write.php';
 
 class App extends Component {
 
