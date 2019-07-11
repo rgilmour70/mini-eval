@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import Classify from './components/classify/classify';
-import ClassResults from './components/classResults';
 
 const WRITE_API = './api/write.php';
 
@@ -73,27 +72,12 @@ class App extends Component {
           "writeError" : ""
         };
 
-  writeToDatabase = (userInput) => {
-    console.log(userInput);
-    axios({
-      method: 'post',
-      url: `${WRITE_API}`,
-      headers: { 'content-type': 'application/json' },
-      data: userInput
-    })
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => this.setState({ writeError: error.message }));
-  };
-
   render() {
     return (
       <div className="App">
         <h1>Levels of Review</h1>
         <p>Drag the resource types (green) into the appropriate column based on their level of review.</p>
-        <Classify {...this.state} writeToDatabase={this.writeToDatabase} />
-        <ClassResults />
+        <Classify {...this.state} />
       </div>
     );
   }

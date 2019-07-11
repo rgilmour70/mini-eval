@@ -128,11 +128,6 @@ class Classify extends Component {
 			this.setState({ correct: isCorrect, response: incorrectResponse });
 		}
 
-		if (!this.state.tried) {
-			// this.recordAnswer(this.state.currentSlide, this.state.contentId, answerString, isCorrect);
-			this.state.writeToDatabase(userInput);
-		}
-
 	};
 
 
